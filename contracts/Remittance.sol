@@ -11,17 +11,17 @@ contract Remittance is Ownable {
     event LogToggleContractState(bool isContractLive);
     event LogCarolWithdrew(address indexed carol, uint amount);
 
-    function Remittance(uint amount, address _carolAddress, string bobPassword, string carolPassword)
+    function Remittance(uint amount, address carolAddress, string bobPassword, string carolPassword)
     public
     {
         // We are setting a max on how much Bob can withdraw, can't be zero
         require(amount > 0);
         maxAmountToBob = amount;
         // We assume Carol had given us her address and we make it required
-        require(_carolAddress != 0);
+        require(carolAddress != 0);
         // create a secret key, that although is visible on the blockchain, takes carol's address
         // as part of the hash for added security -- typecast it to a uint.
-        publicKey = uint(keccak256(carolPassword, bobPassword, _carolAddress));
+        publicKey = uint(keccak256(carolPassword, bobPassword, carolAddress));
     }
 
     // only Alice can do this. She will have to do this after she initializes the contract to be safe.
