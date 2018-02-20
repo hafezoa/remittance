@@ -21,5 +21,6 @@
   "bugs": {
     "url": "https://github.com/hafezoa/remittance/issues"
   },
-  "homepage": "https://github.com/hafezoa/remittance#readme"
+  "homepage": "https://github.com/hafezoa/remittance#readme",
+  "dependencies": {}
 }
